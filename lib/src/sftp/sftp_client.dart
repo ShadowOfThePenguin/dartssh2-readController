@@ -489,6 +489,7 @@ class SftpFile {
   Stream<Uint8List> read({
     int? length,
     int offset = 0,
+    StreamController<Uint8List> controller,
     void Function(int bytesRead)? onProgress,
   }) async* {
     const chunkSize = 16 * 1024;
@@ -512,7 +513,7 @@ class SftpFile {
       throw SftpError('Length must be positive: $length');
     }
 
-    final streamController = StreamController<Uint8List>();
+    final streamController = controller ?? StreamController<Uint8List>();
 
     var bytessRecieved = 0;
     var bytessRequested = 0;

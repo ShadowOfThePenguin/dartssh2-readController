@@ -489,7 +489,7 @@ class SftpFile {
   Stream<Uint8List> read({
     int? length,
     int offset = 0,
-    StreamController<Uint8List> controller,
+    StreamController<Uint8List>? controller,
     void Function(int bytesRead)? onProgress,
   }) async* {
     const chunkSize = 16 * 1024;

@@ -529,7 +529,9 @@ class SftpFile {
         streamController.close();
         return;
       }
-
+      if (streamController.isClosed) {
+        return;
+      }
       streamController.add(chunk);
       bytessRecieved += chunkLength;
 
